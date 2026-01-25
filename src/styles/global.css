@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+  --fixed-bar-height: 2rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 125%; /* 1rem = 20px */
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+/* prettier-ignore */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+p {
+  max-width: 66ch;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+menu {
+  list-style: none;
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}

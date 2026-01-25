@@ -1,23 +1,203 @@
+---
+import '../styles/global.css';
+import { Image } from 'astro:assets';
+import Menu from '../components/Menu.astro';
+import { Icon } from 'astro-icon/components';
+import logo from '@src/images/logo_carklinik_weiss.png';
+
+const { title } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/jpg" href="logo_quadrat-48x48.jpg" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="generator" content={Astro.generator} />
+    <title>carklinik24 | {title}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="canonical" href="https://www.carklinik24.de/" />
+    <link rel="shortlink" href="https://www.carklinik24.de/" />
+  </head>
+  <body>
+    <div id="top" class="fixed-bar">
+      <section class="contacts">
+        <span>
+          <Icon class="data-icon" name="mdi:phone" />
+          <a class="phone" href="tel:+49070316790837">+49 07031 67 90 837</a>
+        </span>
+        <span>
+          <Icon name="mdi:email" />
+          <a href="mailto:info@carklinik24.de">info@carklinik24.de </a>
+        </span>
+      </section>
+      <section id="burger-menu">
+        <Menu />
+        <div id="burger-btn"><span></span><span></span><span></span></div>
+      </section>
+    </div>
+    <header>
+      <div class="content">
+        <section class="logo">
+          <Image
+            src={logo}
+            alt="logo"
+            height={161}
+            loading="eager"
+            format="webp"
+          />
+        </section>
+        <section class="menu"><Menu /></section>
+      </div>
+    </header>
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  body {
+    min-height: 200svh;
+  }
+  .fixed-bar {
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    background: #1221a8;
+    width: 100%;
+    height: var(--fixed-bar-height);
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 2rem 0 0.45rem;
+      color: #fff;
+      span {
+        display: flex;
+        align-items: center;
+        gap: 0.1rem;
+        font-size: 0.6rem;
+        a {
+          font-weight: 600;
+        }
+      }
+    }
+    #burger-menu {
+      display: flex;
+      /* width: 1rem; */
+      position: absolute;
+      justify-content: center;
+      z-index: 10;
+      background: #2b3a44;
+      width: 100%;
+
+      #burger-btn {
+        display: flex;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.3rem;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.25rem;
+        cursor: pointer;
+        width: 1rem;
+        height: 1rem;
+        span {
+          display: block;
+          transition: 0.5s;
+          background: #fff;
+          width: 1rem;
+          height: 1px;
+        }
+      }
+      &.open {
+        menu {
+          padding: 1rem 0;
+          max-height: 15rem;
+        }
+        #burger-btn {
+          span:first-of-type {
+            transform: translateY(0.3rem) rotate(135deg);
+          }
+          span:nth-of-type(2) {
+            transform: rotate(135deg);
+            opacity: 0;
+          }
+          span:last-of-type {
+            transform: translateY(-0.3rem) rotate(-135deg);
+          }
+        }
+      }
+    }
+    @media screen and (min-width: 40rem) {
+      .contacts {
+        justify-content: end;
+        margin: auto;
+        width: 80%;
+      }
+      #burger-menu {
+        display: none;
+      }
+    }
+  }
+  header {
+    position: relative;
+    top: var(--fixed-bar-height);
+    z-index: -10;
+    background: #2b3a44;
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 1rem;
+      height: 4rem;
+      .logo {
+        img {
+          width: auto;
+          height: 1.7rem;
+        }
+      }
+      .menu {
+        display: none;
+      }
+    }
+    @media screen and (min-width: 40rem) {
+      z-index: initial;
+      .content {
+        justify-content: space-between;
+        .menu {
+          display: flex;
+        }
+      }
+    }
+  }
 </style>
+
+<script>
+  const burgerMenuEl = document.getElementById('burger-menu') as HTMLDivElement;
+  const menuLiEls = burgerMenuEl.querySelectorAll(
+    'menu li',
+  ) as NodeListOf<HTMLLIElement>;
+  const burgerBtnEl = burgerMenuEl.querySelector(
+    '#burger-btn',
+  ) as HTMLDivElement;
+
+  burgerBtnEl.addEventListener('click', () => {
+    burgerMenuEl.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    if (!burgerMenuEl.contains(target)) {
+      burgerMenuEl.classList.remove('open');
+    }
+  });
+  menuLiEls.forEach((li) => {
+    li.addEventListener('click', () => {
+      burgerMenuEl.classList.remove('open');
+    });
+  });
+</script>
