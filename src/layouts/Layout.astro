@@ -64,6 +64,7 @@ const { title } = Astro.props;
   .fixed-bar {
     display: flex;
     position: fixed;
+    top: 0;
     z-index: 10;
     background: #1221a8;
     width: 100%;
@@ -147,7 +148,7 @@ const { title } = Astro.props;
   }
   header {
     position: relative;
-    top: var(--fixed-bar-height);
+    margin-top: var(--fixed-bar-height);
     background: #2b3a44;
     .content {
       display: flex;
