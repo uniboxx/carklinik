@@ -39,6 +39,9 @@ a {
   color: inherit;
   font: inherit;
   text-decoration: none;
+  &:focus {
+    outline: none;
+  }
 }
 img,
 picture,

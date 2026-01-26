@@ -55,6 +55,7 @@ const { Content: Presentation } = await presentation.render();
         p {
           color: #666;
           font-weight: 500;
+          font-size: 0.8rem;
         }
         .hero-text {
           padding: 2.5rem 1rem;
@@ -93,14 +94,19 @@ const { Content: Presentation } = await presentation.render();
                 border-radius: 5rem;
                 background: #ffffff66;
                 padding: 0.5rem 1rem;
+                color: #455860;
                 font-weight: 700;
+                font-size: 0.9rem;
                 &:hover {
-                  transform: scale(1.1);
+                  transform: scale(1.05);
                   box-shadow: 0 2px 0.5rem #00000033;
                 }
                 &:active {
                   transform: scale(1);
                   box-shadow: none;
+                }
+                &:focus {
+                  outline: none;
                 }
               }
             }
