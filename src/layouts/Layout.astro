@@ -24,19 +24,21 @@ const { title } = Astro.props;
   </head>
   <body>
     <div id="top" class="fixed-bar">
-      <div class="contacts">
-        <span>
-          <Icon class="data-icon" name="mdi:phone" />
-          <a class="phone" href="tel:+49070316790837">+49 07031 67 90 837</a>
-        </span>
-        <span>
-          <Icon name="mdi:email" />
-          <a href="mailto:info@carklinik24.de">info@carklinik24.de </a>
-        </span>
-      </div>
-      <div id="burger-menu">
-        <Menu />
-        <div id="burger-btn"><span></span><span></span><span></span></div>
+      <div class="content">
+        <div class="contacts">
+          <span>
+            <Icon class="data-icon" name="mdi:phone" />
+            <a class="phone" href="tel:+49070316790837">+49 07031 67 90 837</a>
+          </span>
+          <span>
+            <Icon name="mdi:email" />
+            <a href="mailto:info@carklinik24.de">info@carklinik24.de </a>
+          </span>
+        </div>
+        <div id="burger-menu">
+          <Menu />
+          <div id="burger-btn"><span></span><span></span><span></span></div>
+        </div>
       </div>
     </div>
     <header>
@@ -66,80 +68,85 @@ const { title } = Astro.props;
     background: #1221a8;
     width: 100%;
     height: var(--fixed-bar-height);
-    .contacts {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .content {
+      position: relative;
       align-items: center;
-      gap: 0.1rem 1rem;
-      padding: 0.2rem 2rem 0.2rem 0.45rem;
-      color: #fff;
-      span {
+      .contacts {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: center;
-        gap: 0.1rem;
-        font-size: 0.6rem;
-        a {
-          font-weight: 600;
+        gap: 0.1rem 1rem;
+        padding: 0.2rem 2rem 0.2rem 0.45rem;
+        height: 100%;
+        color: #fff;
+        span {
+          display: flex;
+          align-items: center;
+          gap: 0.1rem;
+          font-size: 0.6rem;
+          a {
+            font-weight: 600;
+          }
         }
       }
-    }
-    #burger-menu {
-      display: flex;
-      /* width: 1rem; */
-      position: absolute;
-      justify-content: center;
-      z-index: 10;
-      background: #2b3a44;
-      width: 100%;
-
-      #burger-btn {
+      #burger-menu {
         display: flex;
         position: absolute;
-        top: 0.5rem;
-        right: 0.6rem;
-        flex-direction: column;
+        top: 0;
         justify-content: center;
-        gap: 0.25rem;
-        cursor: pointer;
-        width: 1rem;
-        height: 1rem;
-        span {
-          display: block;
-          transition: 0.5s;
-          background: #fff;
-          width: 1rem;
-          height: 1px;
-        }
-      }
-      &.open {
-        menu {
-          padding: 1rem 0;
-          max-height: 15rem;
-        }
+        z-index: 10;
+        background: #2b3a44;
+        width: 100%;
+
         #burger-btn {
-          span:first-of-type {
-            transform: translateY(0.3rem) rotate(135deg);
+          display: flex;
+          position: absolute;
+          top: 0.5rem;
+          right: 0.6rem;
+          flex-direction: column;
+          justify-content: center;
+          gap: 0.25rem;
+          cursor: pointer;
+          width: 1rem;
+          height: 1rem;
+          span {
+            display: block;
+            transition: 0.5s;
+            background: #fff;
+            width: 1rem;
+            height: 1px;
           }
-          span:nth-of-type(2) {
-            transform: rotate(135deg);
-            opacity: 0;
+        }
+        &.open {
+          menu {
+            padding: 1rem 0;
+            max-height: 15rem;
           }
-          span:last-of-type {
-            transform: translateY(-0.3rem) rotate(-135deg);
+          #burger-btn {
+            span:first-of-type {
+              transform: translateY(0.3rem) rotate(135deg);
+            }
+            span:nth-of-type(2) {
+              transform: rotate(135deg);
+              opacity: 0;
+            }
+            span:last-of-type {
+              transform: translateY(-0.3rem) rotate(-135deg);
+            }
           }
         }
       }
     }
     @media screen and (min-width: 40rem) {
-      .contacts {
-        justify-content: end;
-        margin: auto;
-        padding-right: 0;
-        width: 80%;
-      }
-      #burger-menu {
-        display: none;
+      .content {
+        .contacts {
+          justify-content: end;
+          padding-right: 0;
+        }
+        #burger-menu {
+          display: none;
+        }
       }
     }
   }
@@ -162,6 +169,9 @@ const { title } = Astro.props;
       }
       .menu {
         display: none;
+        li a {
+          font-size: 0.9rem;
+        }
       }
     }
     @media screen and (min-width: 40rem) {
