@@ -27,13 +27,17 @@ const { Content: Presentation } = await presentation.render();
       <div class="hero-text"><Presentation /></div>
       <div class="hero-cards">
         <div class="card card-transfert">
-          <h2>Wir sind umgezogen:</h2>
-          <p>Neckarstrasse 12<br />71065 Sindelfingen</p>
+          <div class="card-content">
+            <h2>Wir sind umgezogen:</h2>
+            <p>Neckarstrasse 12<br />71065 Sindelfingen</p>
+          </div>
         </div>
         <div class="card card-offert">
-          <h2>Reifeneinlagen</h2>
-          <p>Profitieren Sie von unseren Eröffnungsrabatten.</p>
-          <a href="/offert">mehr Infos</a>
+          <div class="card-content">
+            <h2>Reifeneinlagen</h2>
+            <p>Profitieren Sie von unseren Eröffnungsrabatten.</p>
+            <a href="/offert">mehr Infos</a>
+          </div>
         </div>
       </div>
     </div>
@@ -58,6 +62,7 @@ const { Content: Presentation } = await presentation.render();
           font-size: 0.8rem;
         }
         .hero-text {
+          animation: moveUp 2s ease;
           padding: 2.5rem 1rem;
           h1 {
             margin-bottom: 1rem;
@@ -74,13 +79,24 @@ const { Content: Presentation } = await presentation.render();
           display: flex;
           flex-direction: column;
           flex-wrap: wrap;
+          text-align: center;
           .card {
-            display: flex;
             flex: 1;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            padding: 2.5rem 0;
+            .card-content {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 1rem;
+              animation: moveUp 2s ease;
+              padding: 2.5rem 0;
+              h2 {
+                font-weight: 700;
+                font-size: 1.15rem;
+              }
+              p {
+                text-align: center;
+              }
+            }
             &.card-transfert {
               background: #becedb;
             }
@@ -88,6 +104,7 @@ const { Content: Presentation } = await presentation.render();
               background: #ccd8e5;
 
               a {
+                display: inline-block;
                 position: relative;
                 transition: 0.4s ease;
                 border-radius: 5rem;
@@ -109,18 +126,14 @@ const { Content: Presentation } = await presentation.render();
                 }
               }
             }
-            h2 {
-              font-weight: 700;
-              font-size: 1.15rem;
-            }
-            p {
-              text-align: center;
-            }
           }
         }
       }
       @media screen and (min-width: 40rem) {
         .hero-content {
+          .hero-text {
+            padding: 2.5rem;
+          }
           .hero-cards {
             flex-direction: row;
           }

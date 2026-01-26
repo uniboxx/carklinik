@@ -67,11 +67,13 @@ menu {
 }
 
 /* ANIMATIONS */
-@keyframes pulse {
+@keyframes moveUp {
   from {
-    transform: scale(1);
+    transform: translateY(2rem);
+    opacity: 0;
   }
   to {
-    transform: scale(1.05);
+    transform: translateY(0);
+    opacity: 1;
   }
 }
