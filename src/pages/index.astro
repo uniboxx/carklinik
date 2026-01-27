@@ -3,6 +3,8 @@ import Layout from '@/layouts/Layout.astro';
 import { getImage } from 'astro:assets';
 import hero from '@/images/Workshop-computer-in-service.jpg';
 import { getCollection } from 'astro:content';
+import angebotBg from '@/images/mechanic-replace-tires-on-wheels.jpg';
+import { Icon } from 'astro-icon/components';
 
 const optHero = await getImage({
   src: hero,
@@ -10,10 +12,17 @@ const optHero = await getImage({
   quality: 100,
   loading: 'eager',
 });
+const optAngebot = await getImage({
+  src: angebotBg,
+  format: 'webp',
+  quality: 100,
+  loading: 'lazy',
+});
 const articles = await getCollection('articles');
 const presentation = articles.find((a) => a.slug === 'presentation');
 if (!presentation) throw new Error('presentation not found');
 const { Content: Presentation } = await presentation.render();
+const checkCircleName = 'mdi:check-circle';
 ---
 
 <Layout title="Ihr KFZ-Meisterbetrieb in Sindelfingen">
@@ -42,9 +51,66 @@ const { Content: Presentation } = await presentation.render();
       </div>
     </div>
   </section>
-  <section id="angebot">
-    <h2>Angebot</h2>
+  <div class="separator separator-top"></div>
+  <section
+    id="angebot"
+    style={`background-image: linear-gradient(180deg,#1221a8 0%,rgba(18,33,168,0.57) 70%),url(${optAngebot.src})`}
+  >
+    <h2>Unser vielfältiges Angebot</h2>
+    <div class="content">
+      <div class="text-right">
+        <h3>HU und AU</h3>
+        <p>Montag, Mittwoch und Freitag von 09:00 – 12:00 Uhr</p>
+        <p>
+          nimmt bei unserer Freien Werkstatt der TÜV Ihr Auto ganz genau unter
+          die Lupe<br />
+          und führt die fällige Hauptuntersuchung durch.
+        </p>
+        <p>
+          Ihr Vorteil bei uns: wenn es etwas zu tun gibt,<br />
+          werden Reparaturen gleich durchgeführt.
+        </p>
+        <p>Außerdem überprüft ein modernes AU-Gerät die Abgaswerte!</p>
+      </div>
+      <div class="services-list">
+        <ul class="services services-list-1">
+          <li>
+            <Icon class="icon" name="mdi:check-circle" /> Reparatur aller Marken
+          </li>
+          <li><Icon class="icon" name="mdi:check-circle" /> Autoglas</li>
+          <li><Icon class="icon" name="mdi:check-circle" /> Reifenservice</li>
+          <li>
+            <Icon class="icon" name="mdi:check-circle" /> Karosserie-Instandsetzung
+          </li>
+          <li><Icon class="icon" name="mdi:check-circle" /> Klimaservice</li>
+          <li><Icon class="icon" name="mdi:check-circle" /> Oldtimer</li>
+          <li>
+            <Icon class="icon" name="mdi:check-circle" /> Computerdiagnose
+          </li>
+        </ul>
+        <ul class="services services-list-2">
+          <li>
+            <Icon class="icon" name="mdi:check-circle" /> TÜV-Hauptuntersuchung
+          </li>
+          <li><Icon class="icon" name="mdi:check-circle" /> Inspektion</li>
+          <li>
+            <Icon class="icon" name="mdi:check-circle" /> Autoteile & Zubehör
+          </li>
+          <li>
+            <Icon class="icon" name="mdi:check-circle" /> Reifen einlagern
+          </li>
+          <li>
+            <Icon class="icon" name="mdi:check-circle" /> AU-Abgasuntersuchung
+          </li>
+          <li><Icon class="icon" name="mdi:check-circle" /> Ersatzteile</li>
+          <li>
+            <Icon class="icon" name="mdi:check-circle" /> Chiptuning
+          </li>
+        </ul>
+      </div>
+    </div>
   </section>
+  <div class="separator separator-bottom"></div>
 </Layout>
 
 <style>
@@ -158,8 +224,99 @@ const { Content: Presentation } = await presentation.render();
       }
     }
   }
+
+  .separator {
+    margin-top: calc(var(--angebot-separator-offet-y) * -1);
+    background: linear-gradient(
+      180deg,
+      #1221a8 0%,
+      rgba(18, 33, 168, 0.57) 70%
+    );
+    width: 100%;
+    height: var(--angebot-separator-offet-y);
+    &.separator-top {
+      clip-path: polygon(
+        0 0,
+        100% var(--angebot-separator-offet-y),
+        100% 100%,
+        0 100%
+      );
+    }
+    &.separator-bottom {
+      clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+  /* Angebot */
   section#angebot {
-    padding-top: var(--fixed-bar-height);
-    min-height: 100svh;
+    position: relative;
+    clip-path: polygon(
+      0 0,
+      100% var(--angebot-section-offset-y),
+      100% calc(100% - var(--angebot-section-offset-y)),
+      0 100%
+    );
+    margin-top: calc(var(--angebot-section-offset-y) * -1);
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 6rem 1.5rem;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    h2 {
+      margin-bottom: 4rem;
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .text-right {
+      text-align: right;
+      h3 {
+        margin-bottom: 0.5rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+    .services-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2rem 0;
+      font-size: 0.8rem;
+      .services {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.3rem;
+        width: 100%;
+        list-style: none;
+        li {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          .icon {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+
+    @media screen and (min-width: 40rem) {
+      padding: 8rem;
+      .content {
+        display: flex;
+        gap: 3rem;
+        .services-list {
+          flex-direction: row;
+          align-items: center;
+          padding: 0;
+          .services {
+            width: max-content;
+          }
+        }
+      }
+    }
   }
 </style>
