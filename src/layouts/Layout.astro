@@ -1,12 +1,12 @@
 ---
 import '../styles/global.css';
 import { Image } from 'astro:assets';
-import Menu from '../components/Menu.astro';
+import Menu from '@/components/Menu.astro';
+import Footer from '@/components/Footer.astro';
 import { Icon } from 'astro-icon/components';
 import logo from '@/images/logo_carklinik_weiss.png';
 
 const { title } = Astro.props;
-const path = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -57,18 +57,7 @@ const path = Astro.url.pathname;
       </div>
     </header>
     <slot />
-    <footer>
-      <div class="content">
-        <a
-          href="/datenschutz"
-          class:list={[{ currentPath: path === '/datenschutz' }]}>Datenschutz</a
-        >
-        <a
-          href="/impressum"
-          class:list={[{ currentPath: path === '/impressum' }]}>Impressum</a
-        >
-      </div>
-    </footer>
+    <Footer />
     <!-- <div class="space"></div> -->
   </body>
 </html>
@@ -198,28 +187,7 @@ const path = Astro.url.pathname;
       }
     }
   }
-  footer {
-    background: #2b3a44;
-    .content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.1rem;
-      padding: 0.75rem 0;
-      a {
-        color: #bbb;
-        font-weight: 600;
-        font-size: 0.7rem;
-        font-family: 'Open Sans', sans-serif;
-        &.currentPath {
-          color: #0c71c3;
-        }
-        &:hover {
-          opacity: 0.7;
-        }
-      }
-    }
-  }
+
   .space {
     height: 4rem;
   }

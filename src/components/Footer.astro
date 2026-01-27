@@ -1,0 +1,53 @@
+---
+const path = Astro.url.pathname;
+---
+
+<footer>
+  <div class="content">
+    <a href="/datenschutz">Datenschutz</a>
+    <a href="/impressum">Impressum</a>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: #2b3a44;
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 0.75rem 0;
+      a {
+        color: #bbb;
+        font-weight: 600;
+        font-size: 0.7rem;
+        font-family: 'Open Sans', sans-serif;
+        &.currentPath {
+          color: #0c71c3;
+        }
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  const currentPath = window.location.pathname;
+  const footerEl = document.querySelector('footer') as HTMLDivElement;
+  const linkEls = footerEl.querySelectorAll('a');
+
+  linkEls.forEach((link) => {
+    const href = link.href.match(/\/[^\/]+$/)?.[0] ?? '';
+    console.log(href, currentPath);
+    if (link.classList.contains('currentPath')) {
+      link.classList.remove('currentPath');
+    }
+    if (href === currentPath) {
+      console.log('active');
+      link.classList.add('currentPath');
+    }
+  });
+</script>
