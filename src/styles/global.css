@@ -16,7 +16,13 @@ html {
   font-size: 125%; /* 1rem = 20px */
 }
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
   font-family: 'Open Sans', sans-serif;
+  main {
+    flex: 1;
+  }
 }
 input,
 button,
