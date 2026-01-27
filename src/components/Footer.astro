@@ -37,12 +37,10 @@
 
   linkEls.forEach((link) => {
     const href = link.href.match(/\/[^\/]+$/)?.[0] ?? '';
-    console.log(href, currentPath);
     if (link.classList.contains('currentPath')) {
       link.classList.remove('currentPath');
     }
-    if (href.startsWith(currentPath)) {
-      console.log('active');
+    if (currentPath.startsWith(href)) {
       link.classList.add('currentPath');
     }
   });
