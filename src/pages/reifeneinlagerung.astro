@@ -3,7 +3,54 @@ import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout title="Reifeneinlagerung">
-  <div class="content">
-    <h1>reifeneinlagerung</h1>
-  </div>
+  <main>
+    <div class="content">
+      <div class="content">
+        <h1>Unser Eröffnungsangebot Reifeneinlagerung</h1>
+        <h2 class="strike">50,00 EUR</h2>
+        <h2>JETZT 40,00 EUR</h2>
+        <p>
+          <strong>4 x Einlagerung</strong> für die gesamte Saison <strong
+            >nur 40,00 EUR.*</strong
+          >
+        </p>
+        <p>Oder unser günstiges Paket mit Montage:</p>
+        <p>
+          <strong>4 x Einlagerung + 4 x Montage</strong> für <stron
+            >nur 70,00 EUR*</stron
+          >
+        </p>
+        <p>*Gilt pro Saison. Dauer einer Saison maximal 8 Monate.</p>
+      </div>
+    </div>
+  </main>
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    align-items: center;
+    padding: 4rem 1.7rem;
+    font-family: 'Open Sans', sans-serif;
+    h1 {
+      margin-bottom: 0.5rem;
+      color: #333;
+      font-weight: 500;
+      font-size: 1.3rem;
+    }
+    h2 {
+      margin-bottom: 0.6rem;
+      color: #666;
+      font-weight: 700;
+      font-size: 1.2rem;
+      &.strike {
+        text-decoration: line-through;
+      }
+    }
+    p {
+      margin-bottom: 0.6rem;
+      color: #666;
+      font-size: 0.7rem;
+    }
+  }
+</style>
