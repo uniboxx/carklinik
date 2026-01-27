@@ -3,7 +3,124 @@ import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout title="Impressum">
-  <main><h1>Impressum</h1></main>
+  <main>
+    <div class="content">
+      <h1>Impressum</h1>
+      <p>Hassan & Refik Uzunlar GbR</p>
+      <p>
+        Carklinik KFZ-Werkstatt<br />
+        Neckarstrasse 12<br />
+        71065 Sindelfingen
+      </p>
+      <p>Telefon: <a href="tel:+4970316790837">+49 7031 6790837</a></p>
+      <p>
+        E-Mail: <a href="mailto:info@carklinik24.de">info@carklinik24.de</a>
+      </p>
+      <p>
+        <strong>Umsatzsteuer-ID:</strong><br />
+        Umsatzsteuer-Identifikationsnummer nach §27a Umsatzsteuergesetz: DE300590850
+      </p>
+      <h2>Disclaimer – rechtliche Hinweise</h2>
+      <p>§ 1 Warnhinweis zu Inhalten</p>
+      <p>
+        Die kostenlosen und frei zugänglichen Inhalte dieser Webseite wurden mit
+        größtmöglicher Sorgfalt erstellt. Der Anbieter dieser Webseite übernimmt
+        jedoch keine Gewähr für die Richtigkeit und Aktualität der
+        bereitgestellten kostenlosen und frei zugänglichen journalistischen
+        Ratgeber und Nachrichten. Namentlich gekennzeichnete Beiträge geben die
+        Meinung des jeweiligen Autors und nicht immer die Meinung des Anbieters
+        wieder. Allein durch den Aufruf der kostenlosen und frei zugänglichen
+        Inhalte kommt keinerlei Vertragsverhältnis zwischen dem Nutzer und dem
+        Anbieter zustande, insoweit fehlt es am Rechtsbindungswillen des
+        Anbieters.
+      </p>
+      <p>§ 2 Externe Links</p>
+      <p>
+        Diese Website enthält Verknüpfungen zu Websites Dritter („externe
+        Links“). Diese Websites unterliegen der Haftung der jeweiligen
+        Betreiber. Der Anbieter hat bei der erstmaligen Verknüpfung der externen
+        Links die fremden Inhalte daraufhin überprüft, ob etwaige Rechtsverstöße
+        bestehen. Zu dem Zeitpunkt waren keine Rechtsverstöße ersichtlich. Der
+        Anbieter hat keinerlei Einfluss auf die aktuelle und zukünftige
+        Gestaltung und auf die Inhalte der verknüpften Seiten. Das Setzen von
+        externen Links bedeutet nicht, dass sich der Anbieter die hinter dem
+        Verweis oder Link liegenden Inhalte zu Eigen macht. Eine ständige
+        Kontrolle der externen Links ist für den Anbieter ohne konkrete Hinweise
+        auf Rechtsverstöße nicht zumutbar. Bei Kenntnis von Rechtsverstößen
+        werden jedoch derartige externe Links unverzüglich gelöscht.
+      </p>
+      <p>§ 3 Urheber- und Leistungsschutzrechte</p>
+      <p>
+        Die auf dieser Website veröffentlichten Inhalte unterliegen dem
+        deutschen Urheber- und Leistungsschutzrecht. Jede vom deutschen Urheber-
+        und Leistungsschutzrecht nicht zugelassene Verwertung bedarf der
+        vorherigen schriftlichen Zustimmung des Anbieters oder jeweiligen
+        Rechteinhabers. Dies gilt insbesondere für Vervielfältigung,
+        Bearbeitung, Übersetzung, Einspeicherung, Verarbeitung bzw. Wiedergabe
+        von Inhalten in Datenbanken oder anderen elektronischen Medien und
+        Systemen. Inhalte und Rechte Dritter sind dabei als solche
+        gekennzeichnet. Die unerlaubte Vervielfältigung oder Weitergabe
+        einzelner Inhalte oder kompletter Seiten ist nicht gestattet und
+        strafbar. Lediglich die Herstellung von Kopien und Downloads für den
+        persönlichen, privaten und nicht kommerziellen Gebrauch ist erlaubt.
+      </p>
+      <p>
+        Die Darstellung dieser Website in fremden Frames ist nur mit
+        schriftlicher Erlaubnis zulässig.
+      </p>
+      <p>§ 4 Besondere Nutzungsbedingungen</p>
+      <p>
+        Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von
+        den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle
+        ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen
+        Einzelfall die besonderen Nutzungsbedingungen.
+      </p>
+      <p>
+        Quelle: <a href="https://www.juraforum.de/impressum-generator/"
+          >Impressum Generator von JuraForum.de</a>
+      </p>
+    </div>
+  </main>
 </Layout>
 
-<style></style>
+<style>
+  main {
+    padding: 3rem 0.5rem;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    h1 {
+      margin-bottom: 1rem;
+      color: #333;
+      font-size: 1.2rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      color: #333;
+      font-size: 1.3rem;
+    }
+    p {
+      margin-bottom:;
+      padding-bottom: 0.8rem;
+      color: #666;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+    ol {
+      margin-bottom: 0.8rem;
+      padding: 1rem 1.5rem;
+      color: #666;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+    ul {
+      padding: 0.5rem;
+      list-style-type: disc;
+    }
+    a {
+      color: #2ea3f2;
+    }
+    @media screen and (min-width: 40rem) {
+      padding: 3rem 0;
+    }
+  }
+</style>
