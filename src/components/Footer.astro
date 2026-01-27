@@ -1,7 +1,3 @@
----
-const path = Astro.url.pathname;
----
-
 <footer>
   <div class="content">
     <a href="/datenschutz">Datenschutz</a>
@@ -45,7 +41,7 @@ const path = Astro.url.pathname;
     if (link.classList.contains('currentPath')) {
       link.classList.remove('currentPath');
     }
-    if (href === currentPath) {
+    if (href.startsWith(currentPath)) {
       console.log('active');
       link.classList.add('currentPath');
     }
