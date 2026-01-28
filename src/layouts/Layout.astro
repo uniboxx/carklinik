@@ -5,6 +5,7 @@ import Menu from '@/components/Menu.astro';
 import Footer from '@/components/Footer.astro';
 import { Icon } from 'astro-icon/components';
 import logo from '@/images/logo_carklinik_weiss.png';
+import Replica from '@/components/Replica.astro';
 
 const { title } = Astro.props;
 ---
@@ -24,6 +25,7 @@ const { title } = Astro.props;
     <link rel="shortlink" href="https://www.carklinik24.de/" />
   </head>
   <body>
+    <Replica />
     <div id="top" class="fixed-bar">
       <div class="content">
         <div class="contacts">
