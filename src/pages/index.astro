@@ -22,7 +22,6 @@ const articles = await getCollection('articles');
 const presentation = articles.find((a) => a.slug === 'presentation');
 if (!presentation) throw new Error('presentation not found');
 const { Content: Presentation } = await presentation.render();
-const checkCircleName = 'mdi:check-circle';
 ---
 
 <Layout title="Ihr KFZ-Meisterbetrieb in Sindelfingen">
@@ -33,7 +32,7 @@ const checkCircleName = 'mdi:check-circle';
     >
     </div>
     <div class="hero-content">
-      <div class="hero-text"><Presentation /></div>
+      <div class="hero-text move-up"><Presentation /></div>
       <div class="hero-cards">
         <div class="card card-transfert">
           <div class="card-content">
@@ -132,7 +131,6 @@ const checkCircleName = 'mdi:check-circle';
         font-size: 0.8rem;
       }
       .hero-text {
-        animation: moveUp 2s ease;
         padding: 2.5rem 1rem;
         h1 {
           margin-bottom: 1rem;
@@ -277,6 +275,9 @@ const checkCircleName = 'mdi:check-circle';
       }
       p {
         font-size: 0.9rem;
+        &:not(:last-child) {
+          margin-bottom: 0.5rem;
+        }
       }
     }
     .services-list {
@@ -303,7 +304,7 @@ const checkCircleName = 'mdi:check-circle';
       }
     }
 
-    @media screen and (min-width: 40rem) {
+    @media screen and (min-width: 80rem) {
       padding: 8rem;
       .content {
         display: flex;
@@ -320,3 +321,37 @@ const checkCircleName = 'mdi:check-circle';
     }
   }
 </style>
+
+<script>
+  function moveUp() {
+    const els = document.querySelectorAll(
+      '.move-up',
+    ) as NodeListOf<HTMLElement>;
+    console.log('🚀 ~ :330 ~ moveUp ~ els:', els);
+    els.forEach((el) => {
+      const elementOffsetTop = el.offsetTop;
+      console.log('🚀 ~ :332 ~ moveUp ~ elementOffsetTop:', elementOffsetTop);
+      const windowHeight = document.documentElement.clientHeight;
+      console.log('🚀 ~ :334 ~ moveUp ~ windowHeight:', windowHeight);
+      const windowHeightLimit = windowHeight * 0.5;
+      console.log('🚀 ~ :336 ~ moveUp ~ windowHeightLimit:', windowHeightLimit);
+      const elementOffsetMoveUp = elementOffsetTop - windowHeightLimit;
+      console.log(
+        '🚀 ~ :338 ~ moveUp ~ elementOffsetMoveUp:',
+        elementOffsetMoveUp,
+      );
+      document.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        console.log('🚀 ~ :345 ~ moveUp ~ scrollY:', scrollY);
+        if (scrollY > elementOffsetMoveUp) {
+          console.log('move up!!!!!');
+          el.style.animation = 'moveUp 2s ease-in-out;';
+        } else {
+          el.style.animation = 'none';
+        }
+      });
+    });
+  }
+
+  moveUp();
+</script>
