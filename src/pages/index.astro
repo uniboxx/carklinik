@@ -32,16 +32,16 @@ const { Content: Presentation } = await presentation.render();
     >
     </div>
     <div class="hero-content">
-      <div class="hero-text move-up"><Presentation /></div>
+      <div class="hero-text" data-move="up"><Presentation /></div>
       <div class="hero-cards">
         <div class="card card-transfert">
-          <div class="card-content">
+          <div class="card-content" data-move="up">
             <h2>Wir sind umgezogen:</h2>
             <p>Neckarstrasse 12<br />71065 Sindelfingen</p>
           </div>
         </div>
         <div class="card card-offert">
-          <div class="card-content">
+          <div class="card-content" data-move="up">
             <h2>Reifeneinlagen</h2>
             <p>Profitieren Sie von unseren Eröffnungsrabatten.</p>
             <a href="/reifeneinlagerung">mehr Infos</a>
@@ -72,7 +72,7 @@ const { Content: Presentation } = await presentation.render();
         <p>Außerdem überprüft ein modernes AU-Gerät die Abgaswerte!</p>
       </div>
       <div class="services-list">
-        <ul class="services services-list-1">
+        <ul class="services services-list-1" data-move="up">
           <li>
             <Icon class="icon" name="mdi:check-circle" /> Reparatur aller Marken
           </li>
@@ -87,7 +87,7 @@ const { Content: Presentation } = await presentation.render();
             <Icon class="icon" name="mdi:check-circle" /> Computerdiagnose
           </li>
         </ul>
-        <ul class="services services-list-2">
+        <ul class="services services-list-2" data-move="up">
           <li>
             <Icon class="icon" name="mdi:check-circle" /> TÜV-Hauptuntersuchung
           </li>
@@ -155,7 +155,6 @@ const { Content: Presentation } = await presentation.render();
             flex-direction: column;
             align-items: center;
             gap: 1rem;
-            animation: moveUp 2s ease;
             padding: 2.5rem 0;
             h2 {
               font-weight: 700;
@@ -323,35 +322,6 @@ const { Content: Presentation } = await presentation.render();
 </style>
 
 <script>
-  function moveUp() {
-    const els = document.querySelectorAll(
-      '.move-up',
-    ) as NodeListOf<HTMLElement>;
-    console.log('🚀 ~ :330 ~ moveUp ~ els:', els);
-    els.forEach((el) => {
-      const elementOffsetTop = el.offsetTop;
-      console.log('🚀 ~ :332 ~ moveUp ~ elementOffsetTop:', elementOffsetTop);
-      const windowHeight = document.documentElement.clientHeight;
-      console.log('🚀 ~ :334 ~ moveUp ~ windowHeight:', windowHeight);
-      const windowHeightLimit = windowHeight * 0.5;
-      console.log('🚀 ~ :336 ~ moveUp ~ windowHeightLimit:', windowHeightLimit);
-      const elementOffsetMoveUp = elementOffsetTop - windowHeightLimit;
-      console.log(
-        '🚀 ~ :338 ~ moveUp ~ elementOffsetMoveUp:',
-        elementOffsetMoveUp,
-      );
-      document.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        console.log('🚀 ~ :345 ~ moveUp ~ scrollY:', scrollY);
-        if (scrollY > elementOffsetMoveUp) {
-          console.log('move up!!!!!');
-          el.style.animation = 'moveUp 2s ease-in-out;';
-        } else {
-          el.style.animation = 'none';
-        }
-      });
-    });
-  }
-
-  moveUp();
+  import { move } from '../utils/functions';
+  move();
 </script>

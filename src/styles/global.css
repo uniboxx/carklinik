@@ -4,7 +4,7 @@
   --fixed-bar-height: 2rem;
   --angebot-separator-offet-y: 3rem;
   --angebot-section-offset-y: calc(var(--angebot-separator-offet-y) - 1rem);
-  @media screen and (min-width: 40rem) {
+  @media screen and (min-width: 80rem) {
     --angebot-separator-offet-y: 6rem;
     --angebot-section-offset-y: calc(var(--angebot-separator-offet-y) - 2rem);
   }
@@ -79,6 +79,13 @@ menu {
     padding-left: 0 !important;
     max-width: min(80%, 54rem);
   }
+}
+
+/* [data-move='up'] {
+  opacity: 0;
+} */
+.moving-up {
+  animation: moveUp 1s ease-in-out forwards;
 }
 
 /* ANIMATIONS */
