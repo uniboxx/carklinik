@@ -26,3 +26,19 @@ export function move(direction: string = 'up', hide: boolean = true) {
   onScroll();
   document.addEventListener('scroll', onScroll);
 }
+
+// ANIMATIONS
+
+// @keyframes moveUp {
+//   0% {
+//     transform: translateY(3rem);
+//     opacity: 0;
+//   }
+//   70% {
+//     opacity: 1;
+//   }
+//   to {
+//     transform: translateY(0);
+//     opacity: 1;
+//   }
+// }

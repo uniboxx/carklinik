@@ -302,19 +302,24 @@ const { Content: Presentation } = await presentation.render();
         }
       }
     }
-
-    @media screen and (min-width: 80rem) {
-      padding: 8rem;
+    @media screen and (min-width: 40rem) {
       .content {
-        display: flex;
-        gap: 3rem;
         .services-list {
           flex-direction: row;
-          align-items: center;
-          padding: 0;
           .services {
-            width: max-content;
+            flex: 1;
           }
+        }
+      }
+    }
+    @media screen and (min-width: 80rem) {
+      padding: 10rem;
+      .content {
+        display: flex;
+        justify-content: space-between;
+        gap: 3rem;
+        .services-list {
+          padding: 0;
         }
       }
     }

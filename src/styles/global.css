@@ -90,9 +90,12 @@ menu {
 
 /* ANIMATIONS */
 @keyframes moveUp {
-  from {
-    transform: translateY(2rem);
+  0% {
+    transform: translateY(3rem);
     opacity: 0;
+  }
+  70% {
+    opacity: 1;
   }
   to {
     transform: translateY(0);
