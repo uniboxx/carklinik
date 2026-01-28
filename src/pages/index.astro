@@ -35,13 +35,13 @@ const { Content: Presentation } = await presentation.render();
       <div class="hero-text" data-move="up"><Presentation /></div>
       <div class="hero-cards">
         <div class="card card-transfert">
-          <div class="card-content" data-move="up">
+          <div class="card-content" data-move="right">
             <h2>Wir sind umgezogen:</h2>
             <p>Neckarstrasse 12<br />71065 Sindelfingen</p>
           </div>
         </div>
         <div class="card card-offert">
-          <div class="card-content" data-move="up">
+          <div class="card-content" data-move="left">
             <h2>Reifeneinlagen</h2>
             <p>Profitieren Sie von unseren Eröffnungsrabatten.</p>
             <a href="/reifeneinlagerung">mehr Infos</a>
@@ -55,9 +55,9 @@ const { Content: Presentation } = await presentation.render();
     id="angebot"
     style={`background-image: linear-gradient(180deg,#1221a8 0%,rgba(18,33,168,0.57) 70%),url(${optAngebot.src})`}
   >
-    <h2>Unser vielfältiges Angebot</h2>
+    <h2 data-move="down">Unser vielfältiges Angebot</h2>
     <div class="content">
-      <div class="text-right">
+      <div class="text-right" data-move="right">
         <h3>HU und AU</h3>
         <p>Montag, Mittwoch und Freitag von 09:00 – 12:00 Uhr</p>
         <p>
@@ -72,7 +72,7 @@ const { Content: Presentation } = await presentation.render();
         <p>Außerdem überprüft ein modernes AU-Gerät die Abgaswerte!</p>
       </div>
       <div class="services-list">
-        <ul class="services services-list-1" data-move="up">
+        <ul class="services services-list-1" data-move="left">
           <li>
             <Icon class="icon" name="mdi:check-circle" /> Reparatur aller Marken
           </li>
@@ -87,7 +87,7 @@ const { Content: Presentation } = await presentation.render();
             <Icon class="icon" name="mdi:check-circle" /> Computerdiagnose
           </li>
         </ul>
-        <ul class="services services-list-2" data-move="up">
+        <ul class="services services-list-2" data-move="left">
           <li>
             <Icon class="icon" name="mdi:check-circle" /> TÜV-Hauptuntersuchung
           </li>

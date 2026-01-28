@@ -1,4 +1,4 @@
-export function move(direction: string = 'up', hide: boolean = true) {
+export function move(hide: boolean = true) {
   const els = document.querySelectorAll(
     `[data-move]`,
   ) as NodeListOf<HTMLElement>;
@@ -11,15 +11,12 @@ export function move(direction: string = 'up', hide: boolean = true) {
       if (hide) {
         el.style.opacity = '0';
       }
+      const direction = el.dataset.move;
       const elDistanceFromTop = el.getBoundingClientRect().top;
-      switch (direction) {
-        default:
-          if (elDistanceFromTop < windowBottomLimit) {
-            el.style.animation = 'moveUp 1s ease-in-out forwards';
-          } else if (elDistanceFromTop > windowHeight) {
-            el.style.animation = '';
-          }
-          break;
+      if (elDistanceFromTop < windowBottomLimit) {
+        el.style.animation = `move${direction?.[0].toUpperCase()}${direction?.slice(1)} 1s ease-in-out forwards`;
+      } else if (elDistanceFromTop > windowHeight) {
+        el.style.animation = '';
       }
     });
   }
@@ -39,6 +36,48 @@ export function move(direction: string = 'up', hide: boolean = true) {
 //   }
 //   to {
 //     transform: translateY(0);
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes moveRight {
+//   0% {
+//     transform: translateX(-3rem);
+//     opacity: 0;
+//   }
+//   70% {
+//     opacity: 1;
+//   }
+//   to {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes moveDown {
+//   0% {
+//     transform: translateY(-3rem);
+//     opacity: 0;
+//   }
+//   70% {
+//     opacity: 1;
+//   }
+//   to {
+//     transform: translateY(0);
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes moveLeft {
+//   0% {
+//     transform: translateX(3rem);
+//     opacity: 0;
+//   }
+//   70% {
+//     opacity: 1;
+//   }
+//   to {
+//     transform: translateX(0);
 //     opacity: 1;
 //   }
 // }
