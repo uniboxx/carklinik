@@ -33,16 +33,16 @@ const { Content: Presentation } = await presentation.render();
     >
     </div>
     <div class="hero-content">
-      <div class="hero-text" data-move="up"><Presentation /></div>
+      <div class="hero-text" data-anim="moveUp"><Presentation /></div>
       <div class="hero-cards">
         <div class="card card-transfert">
-          <div class="card-content" data-move="right">
+          <div class="card-content" data-anim="moveRight">
             <h2>Wir sind umgezogen:</h2>
             <p>Neckarstrasse 12<br />71065 Sindelfingen</p>
           </div>
         </div>
         <div class="card card-offert">
-          <div class="card-content" data-move="left">
+          <div class="card-content" data-anim="moveLeft">
             <h2>Reifeneinlagen</h2>
             <p>Profitieren Sie von unseren Eröffnungsrabatten.</p>
             <a href="/reifeneinlagerung">mehr Infos</a>
@@ -56,9 +56,9 @@ const { Content: Presentation } = await presentation.render();
     id="angebot"
     style={`background-image: linear-gradient(180deg,#1221a8 0%,rgba(18,33,168,0.57) 70%),url(${optAngebot.src})`}
   >
-    <h2 data-move="down">Unser vielfältiges Angebot</h2>
+    <h2 data-anim="moveDown">Unser vielfältiges Angebot</h2>
     <div class="content">
-      <div class="text-right" data-move="right">
+      <div class="text-right" data-anim="moveRight">
         <h3>HU und AU</h3>
         <p>Montag, Mittwoch und Freitag von 09:00 – 12:00 Uhr</p>
         <p>
@@ -80,7 +80,7 @@ const { Content: Presentation } = await presentation.render();
               .map((service, idx) => {
                 return (
                   <li
-                    data-move="right"
+                    data-anim="moveRight"
                     style={`animation-delay: ${idx * 0.3}s`}
                   >
                     <Icon class="icon" name="mdi:check-circle" />{' '}
@@ -96,7 +96,10 @@ const { Content: Presentation } = await presentation.render();
               .slice(Math.ceil(services.length / 2))
               .map((service, idx) => {
                 return (
-                  <li data-move="left" style={`animation-delay: ${idx * 0.5}s`}>
+                  <li
+                    data-anim="moveLeft"
+                    style={`animation-delay: ${idx * 0.5}s`}
+                  >
                     <Icon class="icon" name="mdi:check-circle" />{' '}
                     {service.data.text}
                   </li>
@@ -108,6 +111,33 @@ const { Content: Presentation } = await presentation.render();
     </div>
   </section>
   <div class="separator separator-bottom"></div>
+
+  <!-- CONTACT CARDS -->
+  <section class="contact-cards">
+    <div class="card card-address" data-anim="zoomIn">
+      <Icon class="icon" name="ion:home" />
+      <h3>Adresse</h3>
+      <p>Neckarstrasse 12<br />71065 Sindelfingen</p>
+    </div>
+    <div class="card card-phone" data-anim="zoomIn">
+      <Icon class="icon" name="mdi:phone" />
+      <h3>Telefon</h3>
+      <p><a href="tel:+49070316790837">+49 07031 6790837</a></p>
+      <h3>Mobil</h3>
+      <p><a href="tel:+4901724411567">+49 0172 44 11 567</a></p>
+    </div>
+    <div class="card card-clock" data-anim="zoomIn">
+      <Icon class="icon" name="mdi:clock" />
+      <h3>Öffnungszeiten</h3>
+      <p>Mo-Fr 8.00 – 17.00 Uhr<br />Sa 9.00 – 13.00 Uhr</p>
+    </div>
+    <div class="card card-email" data-anim="zoomIn">
+      <Icon class="icon" name="mdi:email" />
+      <h3>Email</h3>
+      <p><a href="mailto:info@carklinik24.de">info@carklinik24.de</a></p>
+    </div>
+  </section>
+  <!-- END CONTACT CARDS -->
 </Layout>
 
 <style>
@@ -239,6 +269,7 @@ const { Content: Presentation } = await presentation.render();
     }
     &.separator-bottom {
       clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+      background: #345168aa;
     }
   }
   /* Angebot */
@@ -322,9 +353,63 @@ const { Content: Presentation } = await presentation.render();
       }
     }
   }
+  section.contact-cards {
+    clip-path: polygon(
+      0% calc(var(--angebot-separator-offet-y) - 1rem),
+      100% 0%,
+      100% 100%,
+      0% 100%
+    );
+
+    margin-top: calc(var(--angebot-section-offset-y) * -1.1);
+    background: #345168;
+    color: #fff;
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      background: linear-gradient(180deg, #1221a8 0%, #345168 70%);
+      padding: 6rem 0;
+      .icon {
+        font-size: 2rem;
+      }
+      a {
+        color: lch(85% 48.64 264.35);
+      }
+      &.card-address {
+        background: linear-gradient(180deg, #345168 0%, #486b91 70%);
+      }
+      &.card-phone {
+        background: linear-gradient(180deg, #345168 0%, #5f82a8 70%);
+      }
+      &.card-clock {
+        background: linear-gradient(180deg, #345168 0%, #486b91 70%);
+      }
+      &.card-email {
+        background: linear-gradient(180deg, #345168 0%, #5f82a8 70%);
+      }
+    }
+    @media screen and (min-width: 40rem) {
+      display: flex;
+      flex-wrap: wrap;
+      .card {
+        min-width: 50%;
+      }
+    }
+    @media screen and (min-width: 60rem) {
+      margin-top: calc(var(--angebot-section-offset-y) * -1.3);
+      .card {
+        min-width: 25%;
+      }
+    }
+    @media screen and (min-width: 80rem) {
+      padding: 3rem 0 0;
+    }
+  }
 </style>
 
 <script>
-  import { move } from '../utils/functions';
-  move();
+  import { animate } from '../utils/functions';
+  animate();
 </script>

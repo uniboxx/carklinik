@@ -1,6 +1,6 @@
-export function move(hide: boolean = true) {
+export function animate() {
   const els = document.querySelectorAll(
-    `[data-move]`,
+    `[data-anim]`,
   ) as NodeListOf<HTMLElement>;
 
   const windowHeight = document.documentElement.clientHeight;
@@ -8,13 +8,14 @@ export function move(hide: boolean = true) {
 
   function onScroll() {
     els.forEach((el) => {
-      if (hide) {
+      const hide = el.dataset.hide ?? 'true';
+      if (hide === 'true') {
         el.style.opacity = '0';
       }
-      const direction = el.dataset.move;
+      const animation = el.dataset.anim;
       const elDistanceFromTop = el.getBoundingClientRect().top;
       if (elDistanceFromTop < windowBottomLimit) {
-        el.style.animation = `move${direction?.[0].toUpperCase()}${direction?.slice(1)} 1s ease-in-out forwards`;
+        el.style.animation = `${animation} 1s ease-in-out forwards`;
       } else if (elDistanceFromTop > windowHeight) {
         el.style.animation = '';
       }
