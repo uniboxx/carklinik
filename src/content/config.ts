@@ -1,3 +1,4 @@
+import { file } from 'astro/loaders';
 import { defineCollection } from 'astro:content';
 import { z } from 'astro:content';
 
@@ -12,4 +13,11 @@ const articles = defineCollection({
   }),
 });
 
-export const collections = { articles };
+const services = defineCollection({
+  loader: file('src/data/services.json'),
+  schema: z.object({
+    text: z.string(),
+  }),
+});
+
+export const collections = { articles, services };

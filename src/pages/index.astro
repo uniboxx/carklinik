@@ -19,6 +19,7 @@ const optAngebot = await getImage({
   loading: 'lazy',
 });
 const articles = await getCollection('articles');
+const services = await getCollection('services');
 const presentation = articles.find((a) => a.slug === 'presentation');
 if (!presentation) throw new Error('presentation not found');
 const { Content: Presentation } = await presentation.render();
@@ -72,39 +73,36 @@ const { Content: Presentation } = await presentation.render();
         <p>Außerdem überprüft ein modernes AU-Gerät die Abgaswerte!</p>
       </div>
       <div class="services-list">
-        <ul class="services services-list-1" data-move="left">
-          <li>
-            <Icon class="icon" name="mdi:check-circle" /> Reparatur aller Marken
-          </li>
-          <li><Icon class="icon" name="mdi:check-circle" /> Autoglas</li>
-          <li><Icon class="icon" name="mdi:check-circle" /> Reifenservice</li>
-          <li>
-            <Icon class="icon" name="mdi:check-circle" /> Karosserie-Instandsetzung
-          </li>
-          <li><Icon class="icon" name="mdi:check-circle" /> Klimaservice</li>
-          <li><Icon class="icon" name="mdi:check-circle" /> Oldtimer</li>
-          <li>
-            <Icon class="icon" name="mdi:check-circle" /> Computerdiagnose
-          </li>
+        <ul class="services services-list-1">
+          {
+            services
+              .slice(0, Math.ceil(services.length / 2))
+              .map((service, idx) => {
+                return (
+                  <li
+                    data-move="right"
+                    style={`animation-delay: ${idx * 0.3}s`}
+                  >
+                    <Icon class="icon" name="mdi:check-circle" />{' '}
+                    {service.data.text}
+                  </li>
+                );
+              })
+          }
         </ul>
-        <ul class="services services-list-2" data-move="left">
-          <li>
-            <Icon class="icon" name="mdi:check-circle" /> TÜV-Hauptuntersuchung
-          </li>
-          <li><Icon class="icon" name="mdi:check-circle" /> Inspektion</li>
-          <li>
-            <Icon class="icon" name="mdi:check-circle" /> Autoteile & Zubehör
-          </li>
-          <li>
-            <Icon class="icon" name="mdi:check-circle" /> Reifen einlagern
-          </li>
-          <li>
-            <Icon class="icon" name="mdi:check-circle" /> AU-Abgasuntersuchung
-          </li>
-          <li><Icon class="icon" name="mdi:check-circle" /> Ersatzteile</li>
-          <li>
-            <Icon class="icon" name="mdi:check-circle" /> Chiptuning
-          </li>
+        <ul class="services services-list-2">
+          {
+            services
+              .slice(Math.ceil(services.length / 2))
+              .map((service, idx) => {
+                return (
+                  <li data-move="left" style={`animation-delay: ${idx * 0.5}s`}>
+                    <Icon class="icon" name="mdi:check-circle" />{' '}
+                    {service.data.text}
+                  </li>
+                );
+              })
+          }
         </ul>
       </div>
     </div>
