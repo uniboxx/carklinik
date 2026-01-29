@@ -52,12 +52,14 @@ const { Content: Presentation } = await presentation.render();
       </div>
     </div>
   </section>
-  <div class="separator separator-top"></div>
   <!-- END SECTION HERO -->
+
+  <div class="separator separator-top"></div>
 
   <!-- SECTION ANGEBOT -->
   <section
     id="angebot"
+    class="clip-trap"
     style={`background-image: linear-gradient(180deg,#1221a8 0%,rgba(18,33,168,0.57) 70%),url(${optAngebot.src})`}
   >
     <h2 data-anim="moveDown">Unser vielfältiges Angebot</h2>
@@ -118,7 +120,7 @@ const { Content: Presentation } = await presentation.render();
   <!-- END SECTION ANGEBOT -->
 
   <!-- CONTACT CARDS -->
-  <section class="contact-cards">
+  <section class="contact-cards clip-top">
     <div class="card card-address" data-anim="zoomIn">
       <Icon class="icon" name="ion:home" />
       <h3>Adresse</h3>
@@ -270,38 +272,20 @@ const { Content: Presentation } = await presentation.render();
     }
 
     .separator {
-      margin-top: calc(var(--angebot-separator-offet-y) * -1);
       background: linear-gradient(
         180deg,
         #1221a8 0%,
         rgba(18, 33, 168, 0.57) 70%
       );
       width: 100%;
-      height: var(--angebot-separator-offet-y);
       &.separator-top {
-        clip-path: polygon(
-          0 0,
-          100% var(--angebot-separator-offet-y),
-          100% 100%,
-          0 100%
-        );
       }
       &.separator-bottom {
-        clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
         background: #345168aa;
       }
     }
     /* Angebot */
     section#angebot {
-      position: relative;
-      clip-path: polygon(
-        0 0,
-        100% var(--angebot-section-offset-y),
-        100% calc(100% - var(--angebot-section-offset-y)),
-        0 100%
-      );
-      margin-top: calc(var(--angebot-section-offset-y) * -1);
-
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -373,14 +357,6 @@ const { Content: Presentation } = await presentation.render();
       }
     }
     section.contact-cards {
-      clip-path: polygon(
-        0% calc(var(--angebot-separator-offet-y) - 1rem),
-        100% 0%,
-        100% 100%,
-        0% 100%
-      );
-
-      margin-top: calc(var(--angebot-section-offset-y) * -1.1);
       background: #345168;
       color: #fff;
       .card {
@@ -417,7 +393,6 @@ const { Content: Presentation } = await presentation.render();
         }
       }
       @media screen and (min-width: 60rem) {
-        margin-top: calc(var(--angebot-section-offset-y) * -1.3);
         .card {
           min-width: 25%;
         }

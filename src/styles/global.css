@@ -2,12 +2,8 @@
 
 :root {
   --fixed-bar-height: 2rem;
-  --angebot-separator-offet-y: 3rem;
-  --angebot-section-offset-y: calc(var(--angebot-separator-offet-y) - 1rem);
-  @media screen and (min-width: 80rem) {
-    --angebot-separator-offet-y: 6rem;
-    --angebot-section-offset-y: calc(var(--angebot-separator-offet-y) - 2rem);
-  }
+  --sep-height: 3rem;
+  --clip-offset: calc(var(--sep-height) / 2);
 }
 
 *,
@@ -79,6 +75,31 @@ menu {
     padding-left: 0 !important;
     max-width: min(80%, 54rem);
   }
+}
+
+.separator {
+  margin-top: calc(var(--sep-height) * -1);
+  width: 100%;
+  height: var(--sep-height);
+  &.separator-top {
+    clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
+  }
+  &.separator-bottom {
+    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+  }
+}
+.clip-trap {
+  clip-path: polygon(
+    0 0,
+    100% var(--clip-offset),
+    100% calc(100% - (var(--clip-offset) * -1)),
+    0 100%
+  );
+  margin-top: calc(var(--clip-offset) * -1);
+}
+.clip-top {
+  clip-path: polygon(0 calc(var(--clip-offset)), 100% 0, 100% 100%, 0 100%);
+  margin-top: calc(var(--clip-offset) * -1);
 }
 
 /* ANIMATIONS */
