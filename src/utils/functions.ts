@@ -4,7 +4,7 @@ export function animate() {
   ) as NodeListOf<HTMLElement>;
 
   const windowHeight = document.documentElement.clientHeight;
-  const windowBottomLimit = windowHeight * 0.85;
+  const windowBottomLimit = windowHeight * 0.9;
 
   function onScroll() {
     els.forEach((el) => {
