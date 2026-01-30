@@ -113,7 +113,12 @@ const { title } = Astro.props;
         z-index: 10;
         background: #2b3a44;
         width: 100%;
-
+        menu {
+          --height: min(30rem, 100svh);
+          gap: 2rem;
+          height: var(--height);
+          font-size: 1.2rem;
+        }
         #burger-btn {
           display: flex;
           position: absolute;
@@ -136,7 +141,7 @@ const { title } = Astro.props;
         &.open {
           menu {
             padding: 2rem 0;
-            max-height: 15rem;
+            max-height: var(--height);
           }
           #burger-btn {
             span:first-of-type {
