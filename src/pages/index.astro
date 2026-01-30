@@ -26,6 +26,7 @@ const { Content: Presentation } = await presentation.render();
 ---
 
 <Layout title="Ihr KFZ-Meisterbetrieb in Sindelfingen">
+  <div id="top"></div>
   <!-- SECTION HERO -->
   <section class="hero">
     <div
@@ -120,7 +121,7 @@ const { Content: Presentation } = await presentation.render();
   <!-- END SECTION ANGEBOT -->
 
   <!-- CONTACT CARDS -->
-  <section id="btn-up-trigger" class="contact-cards clip-top">
+  <section id="infos" class="contact-cards clip-top">
     <div class="card card-address" data-anim="zoomIn">
       <Icon class="icon" name="ion:home" />
       <h3>Adresse</h3>
@@ -147,7 +148,7 @@ const { Content: Presentation } = await presentation.render();
   <!-- END CONTACT CARDS -->
 
   <!-- SECTION MAP -->
-  <section id="map">
+  <section id="anfahrt">
     <iframe
       data-anim="zoomIn"
       class="map"
@@ -158,8 +159,9 @@ const { Content: Presentation } = await presentation.render();
       allowfullscreen=""
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <!-- END SECTION MAP  -->
   </section>
+  <!-- END SECTION MAP  -->
+
   <!-- BUTTON UP  -->
   <div id="btn-up">
     <a href="#top">
@@ -410,7 +412,8 @@ const { Content: Presentation } = await presentation.render();
     }
   }
 
-  #map {
+  #anfahrt {
+    width: 100%;
     height: 20rem;
     .map {
       width: 100%;
@@ -441,16 +444,13 @@ const { Content: Presentation } = await presentation.render();
   import { animate } from '../utils/functions';
   animate();
 
-  const btnUpTriggerEl = document.getElementById(
-    'btn-up-trigger',
-  ) as HTMLDivElement;
+  const infosEl = document.getElementById('infos') as HTMLDivElement;
   const btnUpEl = document.getElementById('btn-up') as HTMLAnchorElement;
 
   const windowHeight = document.documentElement.clientHeight;
 
   function onScroll() {
-    const btnUpTriggerElDistanceFromtop =
-      btnUpTriggerEl.getBoundingClientRect().top;
+    const btnUpTriggerElDistanceFromtop = infosEl.getBoundingClientRect().top;
     if (btnUpTriggerElDistanceFromtop < windowHeight - 200) {
       btnUpEl.style.display = 'block';
     } else {
