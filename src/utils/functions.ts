@@ -4,7 +4,8 @@ export function animate() {
   ) as NodeListOf<HTMLElement>;
 
   const windowHeight = document.documentElement.clientHeight;
-  const windowBottomLimit = windowHeight * 0.9;
+  console.log('🚀 ~ :7 ~ animate ~ windowHeight:', windowHeight);
+  const windowBottomLimit = windowHeight * 0.8;
 
   function onScroll() {
     els.forEach((el) => {
@@ -14,6 +15,11 @@ export function animate() {
       }
       const animation = el.dataset.anim;
       const elDistanceFromTop = el.getBoundingClientRect().top;
+      console.log(
+        el.className,
+        '🚀 ~ :18 ~ onScroll ~ elDistanceFromTop:',
+        elDistanceFromTop,
+      );
       if (elDistanceFromTop < windowBottomLimit) {
         el.style.animation = `${animation} 1s ease-in-out forwards`;
       } else if (elDistanceFromTop > windowHeight) {
