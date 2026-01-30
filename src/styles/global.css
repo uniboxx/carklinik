@@ -102,8 +102,13 @@ menu {
   margin-top: calc(var(--clip-offset) * -1);
 }
 
-/* ANIMATIONS */
+/* THIS FIX THE BUG OF ELEMENTS COMING IN FROM RIGHT */
+*:has([data-anim='moveLeft']) {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
+/* ANIMATIONS */
 @keyframes moveUp {
   0% {
     transform: translateY(3rem);
